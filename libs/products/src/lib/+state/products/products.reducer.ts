@@ -26,7 +26,7 @@ export const initialState: State = productsAdapter.getInitialState({
 
 const productsReducer = createReducer(
   initialState,
-  on(ProductsActions.init, (state) => ({
+  on(ProductsActions.loadProducts, (state) => ({
     ...state,
     loaded: false,
     error: null,

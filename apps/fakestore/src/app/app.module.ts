@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ProductsModule } from '@fakestore/products';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -24,8 +25,11 @@ import { environment } from '../environments/environment';
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    ProductsModule.forRoot({
+      baseUrl: environment.apiUrl
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

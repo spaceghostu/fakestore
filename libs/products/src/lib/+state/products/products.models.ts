@@ -1,7 +1,12 @@
-/**
- * Interface for the 'Products' data
- */
 export interface ProductsEntity {
-  id: string | number; // Primary ID
-  name: string;
+  id: string | number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductsFacade } from '@fakestore/products';
 
 @Component({
   selector: 'fakestore-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fakestore';
+  products$ = this.productsFacade.products$;
+  constructor(private productsFacade: ProductsFacade) {
+    productsFacade.loadProducts();
+  }
+
 }
