@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "fakestore": "apps/fakestore",
-    "fakestore-e2e": "apps/fakestore-e2e"
+    "fakestore-e2e": "apps/fakestore-e2e",
+    "products": "libs/products"
   }
 }
