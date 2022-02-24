@@ -3,6 +3,6 @@
   "projects": {
     "fakestore": "apps/fakestore",
     "fakestore-e2e": "apps/fakestore-e2e",
-    "products": "libs/products"
+    "fakestore-feature-products": "libs/fakestore/feature-products"
   }
 }

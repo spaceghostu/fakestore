@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductsFacade } from '@fakestore/products';
+import { ProductsFacade } from '@fakestore/fakestore-feature-products';
 
 @Component({
   selector: 'fakestore-root',
@@ -12,5 +12,4 @@ export class AppComponent {
   constructor(private productsFacade: ProductsFacade) {
     productsFacade.loadProducts();
   }
-
 }

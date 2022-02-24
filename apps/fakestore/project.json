@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/fakestore",
         "index": "apps/fakestore/src/index.html",
@@ -20,9 +18,7 @@
           "apps/fakestore/src/favicon.ico",
           "apps/fakestore/src/assets"
         ],
-        "styles": [
-          "apps/fakestore/src/styles.scss"
-        ],
+        "styles": ["apps/fakestore/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -88,9 +84,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/fakestore"
-      ],
+      "outputs": ["coverage/apps/fakestore"],
       "options": {
         "jestConfig": "apps/fakestore/jest.config.js",
         "passWithNoTests": true

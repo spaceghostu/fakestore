@@ -5,14 +5,14 @@ import { ProductsPartialState } from './products.reducer';
 import { loadProducts } from './products.actions';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsFacade {
-    products$ = this.store.select(getProductsEntities);
+  products$ = this.store.select(getProductsEntities);
 
-    constructor(private store: Store<ProductsPartialState>) { }
+  constructor(private store: Store<ProductsPartialState>) {}
 
-    loadProducts() {
-        this.store.dispatch(loadProducts());
-    }
+  loadProducts() {
+    this.store.dispatch(loadProducts());
+  }
 }

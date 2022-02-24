@@ -10,16 +10,25 @@ export class ProductsEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.loadProducts),
-      mergeMap(() => this.productsService.getAll()
-        .pipe(
-          map(products => ({ type: ProductsActions.loadProductsSuccess.type, products })),
-          catchError(error => of({ type: ProductsActions.loadProductsFailure.type, error: error.message }))
-        ))
+      mergeMap(() =>
+        this.productsService.getAll().pipe(
+          map((products) => ({
+            type: ProductsActions.loadProductsSuccess.type,
+            products,
+          })),
+          catchError((error) =>
+            of({
+              type: ProductsActions.loadProductsFailure.type,
+              error: error.message,
+            })
+          )
+        )
+      )
     )
   );
 
   constructor(
     private readonly actions$: Actions,
-    private productsService: ProductsService,
-  ) { }
+    private productsService: ProductsService
+  ) {}
 }

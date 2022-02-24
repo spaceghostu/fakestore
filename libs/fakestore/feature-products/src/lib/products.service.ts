@@ -1,19 +1,17 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 export class ProductsServiceConfig {
   baseUrl = '';
 }
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
-
   private _baseUrl = '';
   constructor(
     private http: HttpClient,
-    @Optional() config?: ProductsServiceConfig,
+    @Optional() config?: ProductsServiceConfig
   ) {
     if (config) {
       this._baseUrl = config.baseUrl;

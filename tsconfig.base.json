@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@fakestore/products": ["libs/products/src/index.ts"]
+      "@fakestore/fakestore-feature-products": [
+        "libs/fakestore/feature-products/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

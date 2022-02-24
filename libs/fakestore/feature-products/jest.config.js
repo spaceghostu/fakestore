@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'products',
-  preset: '../../jest.preset.js',
+  displayName: 'fakestore-feature-products',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/libs/products',
+  coverageDirectory: '../../../coverage/libs/fakestore/feature-products',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

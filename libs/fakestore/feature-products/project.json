@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/fakestore/feature-products",
+  "sourceRoot": "libs/fakestore/feature-products/src",
+  "prefix": "fakestore",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/fakestore/feature-products"],
+      "options": {
+        "jestConfig": "libs/fakestore/feature-products/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/fakestore/feature-products/src/**/*.ts",
+          "libs/fakestore/feature-products/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
