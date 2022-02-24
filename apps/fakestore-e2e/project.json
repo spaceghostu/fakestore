@@ -1,0 +1,28 @@
+{
+  "root": "apps/fakestore-e2e",
+  "sourceRoot": "apps/fakestore-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/fakestore-e2e/cypress.json",
+        "devServerTarget": "fakestore:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "fakestore:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fakestore-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["fakestore"]
+}
