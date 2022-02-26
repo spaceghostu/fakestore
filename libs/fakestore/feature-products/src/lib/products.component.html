@@ -1,0 +1,25 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+    <ng-container *ngIf="(error$ | async) === null; else error">
+        <ng-container *ngIf="[products$ | async].length > 0; else empty">
+            <!-- <div class="container"> -->
+            <!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
+            <div class="col" *ngFor="let product of products$ | async">
+                <product-card [product]="product"></product-card>
+            </div>
+            <!-- </div> -->
+            <!-- </div> -->
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+<ng-template #empty>
+    <div>No products found</div>
+</ng-template>
+
+<ng-template #error>
+    <div>An error occurred</div>
+</ng-template>
+
+<ng-template #loading>
+    <div>Loading articles...</div>
+</ng-template>

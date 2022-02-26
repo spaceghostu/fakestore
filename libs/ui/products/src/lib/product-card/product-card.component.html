@@ -1,0 +1,64 @@
+<!-- <div class="card h-100">
+    <div
+        class="bg-image hover-overlay ripple p-5"
+        data-mdb-ripple-color="light"
+    >
+        <img [src]="product.image" class="img img-fluid" />
+        <a>
+            <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+        </a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+    </div>
+
+    <div class="card-footer text-end">
+        <button type="button" class="btn btn-primary btn-floating">
+            <i class="fas fa-cart-plus"></i>
+        </button>
+    </div>
+</div> -->
+
+<div class="card mb-3" style="height: 200px">
+    <div class="row g-0 h-100">
+        <div class="col-md-3 p-4 h-100">
+            <!-- <div class=" h-100"> -->
+            <img
+                [src]="product.image"
+                class="img img-fluid h-100 d-flex mx-auto"
+            />
+            <!-- </div> -->
+        </div>
+        <div class="col-md-9">
+            <div class="card-body">
+                <h5 class="card-title mb-1 max-ln-1">
+                    {{ product.title }}
+                </h5>
+                <p
+                    class="card-text mb-1 text-muted max-ln-2"
+                    [class.max-ln-1]="!showMore"
+                >
+                    {{ truncate(product.description) }}
+                </p>
+                <!-- <a class="link fs-7 pointer" (click)="toggleShowMore()"
+                    >show more</a
+                > -->
+                <p class="card-text mb-1">
+                    <product-card-price
+                        [value]="product.price"
+                    ></product-card-price>
+                </p>
+                <p class="card-text mb-1">
+                    <product-card-rating
+                        [rating]="product.rating.rate"
+                        [count]="product.rating.count"
+                    ></product-card-rating>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

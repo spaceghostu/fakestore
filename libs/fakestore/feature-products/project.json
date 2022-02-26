@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/fakestore/feature-products"],
+      "outputs": [
+        "coverage/libs/fakestore/feature-products"
+      ],
       "options": {
         "jestConfig": "libs/fakestore/feature-products/jest.config.js",
         "passWithNoTests": true

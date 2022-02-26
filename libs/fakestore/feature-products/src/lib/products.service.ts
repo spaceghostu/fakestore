@@ -19,6 +19,7 @@ export class ProductsService {
   }
 
   getAll() {
+    console.log(this._baseUrl);
     return this.http.get(`${this._baseUrl}/products`);
   }
 }

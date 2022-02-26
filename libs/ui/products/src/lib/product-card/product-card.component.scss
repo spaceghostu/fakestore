@@ -1,0 +1,29 @@
+.max-ln-2 {
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.max-ln-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.fs-7 {
+    font-size: 0.8em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.mb-n7 {
+    margin-bottom: -7px !important;
+}

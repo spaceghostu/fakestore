@@ -6,6 +6,8 @@ import * as fromProducts from './+state/products/products.reducer';
 import { ProductsEffects } from './+state/products/products.effects';
 import { ProductsServiceConfig } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './products.component';
+import { ProductCardModule } from '@fakestore/ui/products';
 
 @NgModule({
   imports: [
@@ -16,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
     ),
     EffectsModule.forFeature([ProductsEffects]),
     HttpClientModule,
+    ProductCardModule,
+  ],
+  declarations: [
+    ProductsComponent
   ],
 })
 export class ProductsModule {

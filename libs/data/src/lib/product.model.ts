@@ -1,4 +1,4 @@
-export interface ProductsEntity {
+export interface IProduct {
   id: string | number;
   title: string;
   price: number;

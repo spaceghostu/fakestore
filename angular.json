@@ -1,8 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "data": "libs/data",
     "fakestore": "apps/fakestore",
     "fakestore-e2e": "apps/fakestore-e2e",
-    "fakestore-feature-products": "libs/fakestore/feature-products"
+    "fakestore-feature-products": "libs/fakestore/feature-products",
+    "ui-products": "libs/ui/products"
   }
 }
