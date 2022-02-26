@@ -1,5 +1,5 @@
-<ng-container *ngIf="loaded$ | async; else loading">
-    <ng-container *ngIf="(error$ | async) === null; else error">
+<ng-container *ngIf="(error$ | async) === null; else error">
+    <ng-container *ngIf="loaded$ | async; else loading">
         <ng-container *ngIf="[products$ | async].length > 0; else empty">
             <!-- <div class="container"> -->
             <!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
@@ -17,9 +17,9 @@
 </ng-template>
 
 <ng-template #error>
-    <div>An error occurred</div>
+    <div class="error-message">An error occurred</div>
 </ng-template>
 
 <ng-template #loading>
-    <div>Loading articles...</div>
+    <div class="loader">Loading articles...</div>
 </ng-template>

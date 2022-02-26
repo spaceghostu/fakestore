@@ -1,19 +1,16 @@
-import { ProductsEntity } from './products.models';
+
+import { IProductEntity } from '@fakestore/data';
 import {
   productsAdapter,
   ProductsPartialState,
   initialState,
 } from './products.reducer';
 import * as ProductsSelectors from './products.selectors';
+import { createProductEntity } from './util-create-mock-product';
 
 describe('Products Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getProductsId = (it: ProductsEntity) => it.id;
-  const createProductsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as ProductsEntity);
+  const getEntityId = (entity: IProductEntity) => entity.id;
 
   let state: ProductsPartialState;
 
@@ -21,13 +18,13 @@ describe('Products Selectors', () => {
     state = {
       products: productsAdapter.setAll(
         [
-          createProductsEntity('PRODUCT-AAA'),
-          createProductsEntity('PRODUCT-BBB'),
-          createProductsEntity('PRODUCT-CCC'),
+          createProductEntity(0),
+          createProductEntity(1),
+          createProductEntity(2),
         ],
         {
           ...initialState,
-          selectedId: 'PRODUCT-BBB',
+          selectedId: 2,
           error: ERROR_MSG,
           loaded: true,
         }
@@ -38,17 +35,17 @@ describe('Products Selectors', () => {
   describe('Products Selectors', () => {
     it('getAllProducts() should return the list of Products', () => {
       const results = ProductsSelectors.getAllProducts(state);
-      const selId = getProductsId(results[1]);
+      const selId = getEntityId(results[1]);
 
       expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(selId).toBe(1);
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = ProductsSelectors.getSelected(state) as ProductsEntity;
-      const selId = getProductsId(result);
+      const result = ProductsSelectors.getSelected(state) as IProductEntity;
+      const selId = getEntityId(result);
 
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(selId).toBe(2);
     });
 
     it('getProductsLoaded() should return the current "loaded" status', () => {

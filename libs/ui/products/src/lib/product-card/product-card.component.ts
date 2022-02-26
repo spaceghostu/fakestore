@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { IProduct } from '@fakestore/data';
+import { IProductEntity } from '@fakestore/data';
 
 @Component({
   selector: 'product-card',
@@ -12,7 +12,7 @@ export class ProductCardComponent {
   MAX_LENGTH = 228;
   showMore = false;
 
-  @Input() product!: IProduct;
+  @Input() product!: IProductEntity;
 
   toggleShowMore() {
     this.showMore = !this.showMore;

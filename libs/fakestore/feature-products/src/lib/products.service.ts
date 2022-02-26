@@ -8,7 +8,7 @@ export class ProductsServiceConfig {
   providedIn: 'root',
 })
 export class ProductsService {
-  private _baseUrl = '';
+  _baseUrl = '';
   constructor(
     private http: HttpClient,
     @Optional() config?: ProductsServiceConfig

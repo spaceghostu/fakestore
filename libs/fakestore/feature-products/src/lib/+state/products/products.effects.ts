@@ -7,7 +7,7 @@ import * as ProductsActions from './products.actions';
 
 @Injectable()
 export class ProductsEffects {
-  init$ = createEffect(() =>
+  loadProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.loadProducts),
       mergeMap(() =>
@@ -30,5 +30,5 @@ export class ProductsEffects {
   constructor(
     private readonly actions$: Actions,
     private productsService: ProductsService
-  ) {}
+  ) { }
 }

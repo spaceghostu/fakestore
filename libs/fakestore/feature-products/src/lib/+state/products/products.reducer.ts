@@ -2,25 +2,24 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as ProductsActions from './products.actions';
-import { IProduct } from '@fakestore/data';
+import { IProductEntity } from '@fakestore/data';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
-export interface State extends EntityState<IProduct> {
-  selectedId?: string | number; // which Products record has been selected
-  loaded: boolean; // has the Products list been loaded
-  error?: string | null; // last known error (if any)
+export interface State extends EntityState<IProductEntity> {
+  selectedId?: string | number;
+  loaded: boolean;
+  error?: string | null;
 }
 
 export interface ProductsPartialState {
   readonly [PRODUCTS_FEATURE_KEY]: State;
 }
 
-export const productsAdapter: EntityAdapter<IProduct> =
-  createEntityAdapter<IProduct>();
+export const productsAdapter: EntityAdapter<IProductEntity> =
+  createEntityAdapter<IProductEntity>();
 
 export const initialState: State = productsAdapter.getInitialState({
-  // set initial required properties
   loaded: false,
 });
 

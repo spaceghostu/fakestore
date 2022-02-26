@@ -1,10 +1,10 @@
 {
-    "cSpell.words": [
-        "devkit",
-        "fakestore",
-        "ngcc",
-        "ngrx",
-        "nrwl"
-    ],
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "cSpell.words": ["devkit", "fakestore", "jewelery", "ngcc", "ngrx", "nrwl"],
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "jest.autoRun": {
+        "watch": false,
+        "onSave": "test-file",
+        "onStartup": ["all-tests"]
+    },
+    "jest.jestCommandLine": "vscode-jest-tests"
 }
