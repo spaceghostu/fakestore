@@ -1,9 +1,9 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { getTestBed, TestBed } from '@angular/core/testing';
-import { createProductEntity } from './+state/products/util-create-mock-product';
 
 import { ProductsService } from './products.service';
 import { IProductEntity } from '@fakestore/data';
+import { createProductEntity } from '@fakestore/util/testing';
 
 describe('ProductsService', () => {
   let service: ProductsService;

@@ -3,9 +3,9 @@ import { ProductsComponent } from './products.component';
 import { ProductsFacade } from './+state/products/products.facade';
 import { of, Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { createProductEntity } from './+state/products/util-create-mock-product';
 import { ProductCardModule } from '@fakestore/ui/products';
 import { IProductEntity } from '@fakestore/data';
+import { createProductEntity } from '@fakestore/util/testing';
 
 describe('ProductsComponent', () => {
   let component: ProductsComponent;

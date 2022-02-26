@@ -2,8 +2,8 @@ import { Action } from '@ngrx/store';
 
 import * as ProductsActions from './products.actions';
 import { State, initialState, reducer } from './products.reducer';
-import { createProductEntity } from './util-create-mock-product';
 import { IProductEntity } from '@fakestore/data';
+import { createProductEntity } from '@fakestore/util/testing';
 
 describe('Products Reducer', () => {
 

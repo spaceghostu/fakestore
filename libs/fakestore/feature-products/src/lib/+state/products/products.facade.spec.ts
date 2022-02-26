@@ -1,21 +1,7 @@
-import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
 import { readFirst } from '@nrwl/angular/testing';
-import { NxModule } from '@nrwl/angular';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { createReducer, on, Action } from '@ngrx/store';
-import * as ProductsActions from './products.actions';
 import { ProductsFacade } from './products.facade';
-import {
-    productsAdapter,
-    ProductsPartialState,
-    initialState,
-    reducer,
-    State,
-} from './products.reducer';
+import { initialState } from './products.reducer';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { getAllProducts, getProductsLoaded, getProductsError } from './products.selectors';
 

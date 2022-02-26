@@ -1,12 +1,12 @@
 
 import { IProductEntity } from '@fakestore/data';
+import { createProductEntity } from '@fakestore/util/testing';
 import {
   productsAdapter,
   ProductsPartialState,
   initialState,
 } from './products.reducer';
 import * as ProductsSelectors from './products.selectors';
-import { createProductEntity } from './util-create-mock-product';
 
 describe('Products Selectors', () => {
   const ERROR_MSG = 'No Error Available';

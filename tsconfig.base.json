@@ -1,26 +1,27 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@fakestore/data": ["libs/data/src/index.ts"],
-      "@fakestore/fakestore-feature-products": [
-        "libs/fakestore/feature-products/src/index.ts"
-      ],
-      "@fakestore/ui/products": ["libs/ui/products/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@fakestore/data": ["libs/data/src/index.ts"],
+            "@fakestore/fakestore-feature-products": [
+                "libs/fakestore/feature-products/src/index.ts"
+            ],
+            "@fakestore/ui/products": ["libs/ui/products/src/index.ts"],
+            "@fakestore/util/testing": ["libs/util/testing/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }

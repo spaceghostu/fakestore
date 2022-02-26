@@ -1,0 +1,23 @@
+{
+    "root": "libs/util/testing",
+    "sourceRoot": "libs/util/testing/src",
+    "projectType": "library",
+    "targets": {
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/util/testing/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/util/testing"],
+            "options": {
+                "jestConfig": "libs/util/testing/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

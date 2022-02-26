@@ -6,6 +6,5 @@
         "types": []
     },
     "include": ["**/*.ts"],
-    "exclude": ["**/*.spec.ts"],
-    "composite": true
+    "exclude": ["**/*.spec.ts"]
 }

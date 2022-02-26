@@ -1,4 +1,3 @@
-// TODO: move this file to util library
 import { IProductEntity } from '@fakestore/data';
 
 const randomFloat = (min: number, max: number, decimals = 2): number => {
