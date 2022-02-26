@@ -12,3 +12,8 @@ export const loadProductsFailure = createAction(
   '[Products/API] Load Products Failure',
   props<{ error: string; }>()
 );
+
+export const selectProduct = createAction(
+  '[Products Page] Select Products',
+  props<{ id: number; }>()
+);

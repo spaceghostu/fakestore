@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -27,15 +26,27 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { CartModule } from '@fakestore/fakestore-feature-cart';
+
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({
+    keys: ['cart'],
+    rehydrate: true,
+  })(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(
       {},
       {
-        metaReducers: !environment.production ? [] : [],
+        metaReducers,
         runtimeChecks: {
           strictActionImmutability: true,
           strictStateImmutability: true,
@@ -47,6 +58,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductsModule.forRoot({
       baseUrl: environment.apiUrl,
     }),
+    CartModule,
     NgbModule,
     AppRoutingModule,
     MdbAccordionModule,

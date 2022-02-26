@@ -11,12 +11,13 @@ export class ProductCardRatingComponent {
   remainder = 0;
   value = 0;
   @Input()
-  set rating(value: number) {
+  set rating(value: number | undefined) {
+    if (!value) return;
     this.floor = Math.floor(value);
     this.remainder = (value - this.floor) * 20;
     this.value = value;
   }
-  @Input() count = 0;
+  @Input() count?= 0;
 
   range(size: number) {
     return new Array(size);

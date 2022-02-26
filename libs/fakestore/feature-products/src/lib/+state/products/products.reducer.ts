@@ -36,7 +36,11 @@ const productsReducer = createReducer(
   on(ProductsActions.loadProductsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(ProductsActions.selectProduct, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
 );
 
 export function reducer(state: State | undefined, action: Action) {

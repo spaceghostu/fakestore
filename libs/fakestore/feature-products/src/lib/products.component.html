@@ -4,7 +4,10 @@
             <!-- <div class="container"> -->
             <!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
             <div class="col" *ngFor="let product of products$ | async">
-                <product-card [product]="product"></product-card>
+                <product-card
+                    [product]="product"
+                    [routerLink]="['/products', product.id]"
+                ></product-card>
             </div>
             <!-- </div> -->
             <!-- </div> -->
@@ -21,5 +24,5 @@
 </ng-template>
 
 <ng-template #loading>
-    <div class="loader">Loading articles...</div>
+    <div class="loader">Loading...</div>
 </ng-template>

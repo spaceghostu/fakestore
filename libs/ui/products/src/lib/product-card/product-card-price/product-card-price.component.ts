@@ -11,7 +11,7 @@ export class ProductCardPriceComponent {
   mainValue = '0';
   cents = '00';
   @Input()
-  set value(value: number) {
+  set value(value: number | undefined) {
     if (!value) return;
     if (value.toString().includes('.')) {
       this.mainValue = value?.toString?.().match?.(/[^.]*/)?.[0] || '';

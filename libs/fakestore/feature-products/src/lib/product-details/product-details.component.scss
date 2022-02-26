@@ -1,0 +1,17 @@
+.bg-secondary {
+    background-color: rgba(108, 117, 125) !important;
+}
+
+.form-wrapper {
+    position: relative;
+}
+
+.form-label {
+    margin-bottom: 0;
+    position: absolute;
+    top: -10px;
+    left: 21px;
+    background: white;
+    font-size: 13px;
+    padding: 0 7px;
+}

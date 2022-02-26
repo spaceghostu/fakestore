@@ -17,6 +17,8 @@ import { ProductCardRatingComponent } from './product-card-rating/product-card-r
   ],
   exports: [
     ProductCardComponent,
+    ProductCardPriceComponent,
+    ProductCardRatingComponent,
   ]
 })
 export class ProductCardModule { }

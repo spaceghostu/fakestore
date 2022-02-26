@@ -8,6 +8,8 @@ import { ProductsServiceConfig } from './products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products.component';
 import { ProductCardModule } from '@fakestore/ui/products';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -19,9 +21,11 @@ import { ProductCardModule } from '@fakestore/ui/products';
     EffectsModule.forFeature([ProductsEffects]),
     HttpClientModule,
     ProductCardModule,
+    RouterModule
   ],
   declarations: [
-    ProductsComponent
+    ProductsComponent,
+    ProductDetailsComponent
   ],
 })
 export class ProductsModule {

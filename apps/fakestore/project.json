@@ -1,102 +1,94 @@
 {
-  "projectType": "application",
-  "root": "apps/fakestore",
-  "sourceRoot": "apps/fakestore/src",
-  "prefix": "fakestore",
-  "targets": {
-    "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "options": {
-        "outputPath": "dist/apps/fakestore",
-        "index": "apps/fakestore/src/index.html",
-        "main": "apps/fakestore/src/main.ts",
-        "polyfills": "apps/fakestore/src/polyfills.ts",
-        "tsConfig": "apps/fakestore/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/fakestore/src/favicon.ico",
-          "apps/fakestore/src/assets"
-        ],
-        "styles": [
-          "apps/fakestore/src/styles.scss"
-        ],
-        "scripts": [
-          "node_modules/chart.js/dist/chart.js"
-        ]
-      },
-      "configurations": {
-        "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+    "projectType": "application",
+    "root": "apps/fakestore",
+    "sourceRoot": "apps/fakestore/src",
+    "prefix": "fakestore",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/fakestore",
+                "index": "apps/fakestore/src/index.html",
+                "main": "apps/fakestore/src/main.ts",
+                "polyfills": "apps/fakestore/src/polyfills.ts",
+                "tsConfig": "apps/fakestore/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    "apps/fakestore/src/favicon.ico",
+                    "apps/fakestore/src/assets"
+                ],
+                "styles": ["apps/fakestore/src/styles.scss"],
+                "scripts": ["node_modules/chart.js/dist/chart.js"]
             },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
-            }
-          ],
-          "fileReplacements": [
-            {
-              "replace": "apps/fakestore/src/environments/environment.ts",
-              "with": "apps/fakestore/src/environments/environment.prod.ts"
-            }
-          ],
-          "outputHashing": "all"
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/fakestore/src/environments/environment.ts",
+                            "with": "apps/fakestore/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
         },
-        "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
-        }
-      },
-      "defaultConfiguration": "production"
-    },
-    "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
-      "configurations": {
-        "production": {
-          "browserTarget": "fakestore:build:production"
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "fakestore:build:production"
+                },
+                "development": {
+                    "browserTarget": "fakestore:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
         },
-        "development": {
-          "browserTarget": "fakestore:build:development"
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "fakestore:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/fakestore/src/**/*.ts",
+                    "apps/fakestore/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/fakestore"],
+            "options": {
+                "jestConfig": "apps/fakestore/jest.config.js",
+                "passWithNoTests": true
+            }
         }
-      },
-      "defaultConfiguration": "development"
     },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "browserTarget": "fakestore:build"
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/fakestore/src/**/*.ts",
-          "apps/fakestore/src/**/*.html"
-        ]
-      }
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/fakestore"
-      ],
-      "options": {
-        "jestConfig": "apps/fakestore/jest.config.js",
-        "passWithNoTests": true
-      }
-    }
-  },
-  "tags": []
+    "tags": []
 }
