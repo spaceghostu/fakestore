@@ -2,9 +2,9 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ProductsFacade } from '../+state/products/products.facade';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, forkJoin, map, Subject, Subscription, take, takeUntil } from 'rxjs';
-import { ICartItem, IProductEntity } from '@fakestore/data';
-import { CartFacade } from '../../../../feature-cart/src/lib/+state/cart.facade';
+import { combineLatest, Subject, takeUntil } from 'rxjs';
+import { IProductEntity } from '@fakestore/data';
+import { CartFacade } from '@fakestore/fakestore-feature-cart';
 
 @Component({
   selector: 'fakestore-product-details',
