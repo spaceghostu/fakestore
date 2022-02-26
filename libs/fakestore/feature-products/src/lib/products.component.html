@@ -6,7 +6,7 @@
             <div class="col" *ngFor="let product of products$ | async">
                 <product-card
                     [product]="product"
-                    [routerLink]="['/products', product.id]"
+                    [routerLink]="['/product', product.id]"
                 ></product-card>
             </div>
             <!-- </div> -->
