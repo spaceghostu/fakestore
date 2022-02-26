@@ -16,6 +16,9 @@
         "baseUrl": ".",
         "paths": {
             "@fakestore/data": ["libs/data/src/index.ts"],
+            "@fakestore/fakestore-feature-cart": [
+                "libs/fakestore/feature-cart/src/index.ts"
+            ],
             "@fakestore/fakestore-feature-products": [
                 "libs/fakestore/feature-products/src/index.ts"
             ],

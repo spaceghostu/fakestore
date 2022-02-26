@@ -4,6 +4,7 @@
         "data": "libs/data",
         "fakestore": "apps/fakestore",
         "fakestore-e2e": "apps/fakestore-e2e",
+        "fakestore-feature-cart": "libs/fakestore/feature-cart",
         "fakestore-feature-products": "libs/fakestore/feature-products",
         "ui-products": "libs/ui/products",
         "util-testing": "libs/util/testing"

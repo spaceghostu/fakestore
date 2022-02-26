@@ -1,0 +1,23 @@
+{
+    "root": "libs/fakestore/feature-cart",
+    "sourceRoot": "libs/fakestore/feature-cart/src",
+    "projectType": "library",
+    "targets": {
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/fakestore/feature-cart/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/fakestore/feature-cart"],
+            "options": {
+                "jestConfig": "libs/fakestore/feature-cart/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}
