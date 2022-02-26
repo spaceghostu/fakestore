@@ -1,6 +1,12 @@
 <ng-container *ngIf="loaded; else loading">
     <ng-container *ngIf="product; else empty">
         <div class="container row align-items-center" *ngIf="product">
+            <div class="col-md-12">
+                <a class="btn btn-link" routerLink="/products" role="button">
+                    <i class="fas fa-arrow-left"></i>
+                    <span class="mx-2">Back</span>
+                </a>
+            </div>
             <div class="col col-md-6 px-5">
                 <img class="w-100" [src]="product?.image" alt="" />
             </div>
