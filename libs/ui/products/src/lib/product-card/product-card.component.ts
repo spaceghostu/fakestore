@@ -22,4 +22,5 @@ export class ProductCardComponent {
     if (string.length < this.MAX_LENGTH) return string;
     return string.substring(0, this.MAX_LENGTH) + '...';
   }
+
 }

@@ -14,8 +14,8 @@ export class ProductCardPriceComponent {
   set value(value: number | undefined) {
     if (!value) return;
     if (value.toString().includes('.')) {
-      this.mainValue = value?.toString?.().match?.(/[^.]*/)?.[0] || '';
-      this.cents = value?.toString?.().match?.(/\.(.*)/)?.[1] || '';
+      this.mainValue = value?.toFixed(2).toString?.().match?.(/[^.]*/)?.[0] || '';
+      this.cents = value?.toFixed(2).toString?.().match?.(/\.(.*)/)?.[1] || '';
     } else {
       this.mainValue = value.toString();
     }
