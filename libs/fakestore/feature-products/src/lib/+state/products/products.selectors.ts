@@ -21,6 +21,11 @@ export const getProductsError = createSelector(
   (state: State) => state.error
 );
 
+export const getFilter = createSelector(
+  getProductsState,
+  (state: State) => state.filter
+);
+
 export const getAllProducts = createSelector(getProductsState, (state: State) =>
   selectAll(state)
 );

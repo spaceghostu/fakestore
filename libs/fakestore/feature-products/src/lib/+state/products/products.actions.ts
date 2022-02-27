@@ -17,3 +17,9 @@ export const selectProduct = createAction(
   '[Products Page] Select Products',
   props<{ id: number; }>()
 );
+
+// This is just a filter because fakestoreapi.com doesn't have search functionality
+export const queryProducts = createAction(
+  '[Products Page] Query Products',
+  props<{ query?: string; }>()
+);

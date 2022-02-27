@@ -10,6 +10,7 @@ export interface State extends EntityState<IProductEntity> {
   selectedId?: string | number;
   loaded: boolean;
   error?: string | null;
+  filter: string;
 }
 
 export interface ProductsPartialState {
@@ -21,6 +22,7 @@ export const productsAdapter: EntityAdapter<IProductEntity> =
 
 export const initialState: State = productsAdapter.getInitialState({
   loaded: false,
+  filter: '',
 });
 
 const productsReducer = createReducer(
@@ -40,6 +42,10 @@ const productsReducer = createReducer(
   on(ProductsActions.selectProduct, (state, { id }) => ({
     ...state,
     selectedId: id,
+  })),
+  on(ProductsActions.queryProducts, (state, { query }) => ({
+    ...state,
+    filter: query || '',
   })),
 );
 

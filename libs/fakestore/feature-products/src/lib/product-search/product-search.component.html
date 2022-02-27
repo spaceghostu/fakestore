@@ -1,0 +1,32 @@
+<form
+    class="d-flex w-auto"
+    [formGroup]="searchForm"
+    (ngSubmit)="handleSubmit()"
+>
+    <div class="input-group">
+        <input
+            type="search"
+            class="form-control h-100"
+            placeholder="Search..."
+            aria-label="Search"
+            formControlName="searchQuery"
+        />
+        <span
+            *ngIf="searchForm.invalid; else submitButton"
+            mdbTooltip="Search field is empty"
+        >
+            <ng-container *ngTemplateOutlet="submitButton"></ng-container>
+        </span>
+    </div>
+</form>
+
+<ng-template #submitButton>
+    <button
+        class="btn btn-outline-primary"
+        type="submit"
+        [disabled]="searchForm.invalid"
+        mdbRipple
+    >
+        Search
+    </button>
+</ng-template>

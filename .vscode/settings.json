@@ -1,5 +1,13 @@
 {
-    "cSpell.words": ["devkit", "fakestore", "jewelery", "ngcc", "ngrx", "nrwl"],
+    "cSpell.words": [
+        "devkit",
+        "fakestore",
+        "fakestoreapi",
+        "jewelery",
+        "ngcc",
+        "ngrx",
+        "nrwl"
+    ],
     "typescript.tsdk": "node_modules/typescript/lib",
     "jest.autoRun": {
         "watch": false,

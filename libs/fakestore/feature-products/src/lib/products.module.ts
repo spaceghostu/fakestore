@@ -10,6 +10,10 @@ import { ProductsComponent } from './products.component';
 import { ProductCardModule } from '@fakestore/ui/products';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RouterModule } from '@angular/router';
+import { ProductSearchComponent } from './product-search/product-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
+import { UtilSharedModule } from '@fakestore/util/shared';
 
 @NgModule({
   imports: [
@@ -21,11 +25,18 @@ import { RouterModule } from '@angular/router';
     EffectsModule.forFeature([ProductsEffects]),
     HttpClientModule,
     ProductCardModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    MdbTooltipModule,
+    UtilSharedModule
   ],
   declarations: [
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductSearchComponent
+  ],
+  exports: [
+    ProductSearchComponent,
   ],
 })
 export class ProductsModule {

@@ -8,6 +8,7 @@
         "fakestore-feature-products": "libs/fakestore/feature-products",
         "ui-cart": "libs/ui/cart",
         "ui-products": "libs/ui/products",
+        "util-shared": "libs/util/shared",
         "util-testing": "libs/util/testing"
     }
 }

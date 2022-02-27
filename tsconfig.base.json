@@ -24,6 +24,7 @@
             ],
             "@fakestore/ui/cart": ["libs/ui/cart/src/index.ts"],
             "@fakestore/ui/products": ["libs/ui/products/src/index.ts"],
+            "@fakestore/util/shared": ["libs/util/shared/src/index.ts"],
             "@fakestore/util/testing": ["libs/util/testing/src/index.ts"]
         }
     },

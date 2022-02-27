@@ -6,7 +6,7 @@ import { takeUntil, Subject } from 'rxjs';
 @Component({
   selector: 'fakestore-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnDestroy {
 
@@ -14,14 +14,22 @@ export class ProductsComponent implements OnDestroy {
   loaded$ = this.facade.loaded$;
   error$ = this.facade.error$;
   destroyed$ = new Subject();
+  filterValue = '';
 
-  constructor(private facade: ProductsFacade) {
+  constructor(
+    private facade: ProductsFacade,
+  ) {
     facade.loadProducts();
     this.facade.products$.pipe(
       takeUntil(this.destroyed$)
     ).subscribe(products => {
       if (!products) return;
       this.products = products;
+    });
+    this.facade.filter$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(filter => {
+      this.filterValue = filter;
     });
   }
 
