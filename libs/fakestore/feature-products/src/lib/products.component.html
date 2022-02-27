@@ -3,7 +3,11 @@
         <ng-container *ngIf="products.length > 0; else empty">
             <div
                 class="col"
-                *ngFor="let product of products | filter: filterValue"
+                *ngFor="
+                    let product of products
+                        | filterCategory: category
+                        | filter: filterValue
+                "
             >
                 <product-card
                     [product]="product"

@@ -9,7 +9,6 @@ import { environment } from '../environments/environment';
 import { ProductsModule } from '@fakestore/fakestore-feature-products';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -28,6 +27,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { CartModule } from '@fakestore/fakestore-feature-cart';
+import { NavbarModule } from './navbar/navbar.module';
 
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -40,7 +40,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(
@@ -77,6 +77,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
+    NavbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

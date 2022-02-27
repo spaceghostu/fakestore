@@ -1,0 +1,42 @@
+<li mdbDropdown class="nav-item dropdown">
+    <a
+        class="nav-link dropdown-toggle text-capitalize"
+        role="button"
+        mdbDropdownToggle
+    >
+        {{ (category$ | async) || 'Select category' }}
+    </a>
+    <ul mdbDropdownMenu class="dropdown-menu">
+        <li>
+            <a class="dropdown-item" (click)="handleSelect(categories.ALL)"
+                >All</a
+            >
+        </li>
+        <li>
+            <a
+                class="dropdown-item"
+                (click)="handleSelect(categories.ELECTRONICS)"
+                >Electronics</a
+            >
+        </li>
+        <li>
+            <a class="dropdown-item" (click)="handleSelect(categories.JEWELRY)"
+                >Jewelery</a
+            >
+        </li>
+        <li>
+            <a
+                class="dropdown-item"
+                (click)="handleSelect(categories.MENS_CLOTHING)"
+                >Men's clothing</a
+            >
+        </li>
+        <li>
+            <a
+                class="dropdown-item"
+                (click)="handleSelect(categories.WOMENS_CLOTHING)"
+                >Women's clothing</a
+            >
+        </li>
+    </ul>
+</li>

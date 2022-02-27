@@ -11,6 +11,7 @@ export interface State extends EntityState<IProductEntity> {
   loaded: boolean;
   error?: string | null;
   filter: string;
+  category: string;
 }
 
 export interface ProductsPartialState {
@@ -23,6 +24,7 @@ export const productsAdapter: EntityAdapter<IProductEntity> =
 export const initialState: State = productsAdapter.getInitialState({
   loaded: false,
   filter: '',
+  category: '',
 });
 
 const productsReducer = createReducer(
@@ -46,6 +48,10 @@ const productsReducer = createReducer(
   on(ProductsActions.queryProducts, (state, { query }) => ({
     ...state,
     filter: query || '',
+  })),
+  on(ProductsActions.setCategory, (state, { category }) => ({
+    ...state,
+    category: category || '',
   })),
 );
 

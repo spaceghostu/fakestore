@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IProductEntity } from '@fakestore/data';
+import { Categories, IProductEntity } from '@fakestore/data';
 
 export const loadProducts = createAction('[Products Page] Load Products');
 
@@ -22,4 +22,9 @@ export const selectProduct = createAction(
 export const queryProducts = createAction(
   '[Products Page] Query Products',
   props<{ query?: string; }>()
+);
+
+export const setCategory = createAction(
+  '[Products Page] Set Category',
+  props<{ category?: Categories; }>()
 );

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getAllProducts, getProductsLoaded, getProductsError, getSelected, getSelectedId, getFilter } from './products.selectors';
+import { getAllProducts, getProductsLoaded, getProductsError, getSelected, getSelectedId, getFilter, getCategory } from './products.selectors';
 import { ProductsPartialState } from './products.reducer';
-import { loadProducts, queryProducts, selectProduct } from './products.actions';
+import { loadProducts, queryProducts, selectProduct, setCategory } from './products.actions';
+import { Categories } from '@fakestore/data';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class ProductsFacade {
   loaded$ = this.store.select(getProductsLoaded);
   error$ = this.store.select(getProductsError);
   filter$ = this.store.select(getFilter);
+  category$ = this.store.select(getCategory);
 
   constructor(private store: Store<ProductsPartialState>) { }
 
@@ -25,5 +27,8 @@ export class ProductsFacade {
   }
   queryProducts(query: string) {
     this.store.dispatch(queryProducts({ query }));
+  }
+  setCategory(category: Categories) {
+    this.store.dispatch(setCategory({ category }));
   }
 }

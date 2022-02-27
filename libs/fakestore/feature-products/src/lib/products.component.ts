@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { IProductEntity } from '@fakestore/data';
+import { Categories, IProductEntity } from '@fakestore/data';
 import { ProductsFacade } from './+state/products/products.facade';
 import { takeUntil, Subject } from 'rxjs';
 
@@ -15,6 +15,7 @@ export class ProductsComponent implements OnDestroy {
   error$ = this.facade.error$;
   destroyed$ = new Subject();
   filterValue = '';
+  category = Categories.ALL;
 
   constructor(
     private facade: ProductsFacade,
@@ -30,6 +31,11 @@ export class ProductsComponent implements OnDestroy {
       takeUntil(this.destroyed$)
     ).subscribe(filter => {
       this.filterValue = filter;
+    });
+    this.facade.category$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(category => {
+      this.category = category as Categories;
     });
   }
 

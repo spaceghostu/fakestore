@@ -26,6 +26,11 @@ export const getFilter = createSelector(
   (state: State) => state.filter
 );
 
+export const getCategory = createSelector(
+  getProductsState,
+  (state: State) => state.category
+);
+
 export const getAllProducts = createSelector(getProductsState, (state: State) =>
   selectAll(state)
 );

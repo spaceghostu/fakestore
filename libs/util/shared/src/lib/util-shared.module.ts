@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilterPipe } from './filter.pipe';
+import { FilterCategoryPipe } from './filter-category.pipe';
 
 
 
 @NgModule({
   declarations: [
-    FilterPipe
+    FilterPipe,
+    FilterCategoryPipe,
   ],
   exports: [
-    FilterPipe
+    FilterPipe,
+    FilterCategoryPipe,
   ],
   imports: [
     CommonModule
