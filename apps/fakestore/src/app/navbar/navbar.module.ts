@@ -5,6 +5,7 @@ import { CategorySelectorComponent } from './category-selector/category-selector
 import { ProductsModule } from '@fakestore/fakestore-feature-products';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
     ProductsModule,
     MdbCollapseModule,
     MdbDropdownModule,
+    RouterModule,
   ],
   declarations: [NavbarComponent, CategorySelectorComponent],
   exports: [NavbarComponent]
