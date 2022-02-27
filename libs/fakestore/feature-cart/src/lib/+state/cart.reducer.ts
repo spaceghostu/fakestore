@@ -1,4 +1,4 @@
-import { EntityState, EntityAdapter, createEntityAdapter, Update } from '@ngrx/entity';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as CartActions from './cart.actions';
@@ -18,6 +18,7 @@ export const cartAdapter: EntityAdapter<ICartItem> =
     createEntityAdapter<ICartItem>();
 
 export const initialState: State = cartAdapter.getInitialState({
+    entities: []
 });
 
 const cartReducer = createReducer(

@@ -1,9 +1,9 @@
 <ng-container *ngIf="(error$ | async) === null; else error">
     <ng-container *ngIf="loaded$ | async; else loading">
-        <ng-container *ngIf="[products$ | async].length > 0; else empty">
+        <ng-container *ngIf="products.length > 0; else empty">
             <!-- <div class="container"> -->
             <!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
-            <div class="col" *ngFor="let product of products$ | async">
+            <div class="col" *ngFor="let product of products">
                 <product-card
                     [product]="product"
                     [routerLink]="['/product', product.id]"

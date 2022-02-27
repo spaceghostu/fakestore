@@ -1,19 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { IProductEntity } from '@fakestore/data';
 import { ProductsFacade } from './+state/products/products.facade';
+import { takeUntil, Subject } from 'rxjs';
 
 @Component({
   selector: 'fakestore-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnDestroy {
 
-  products$ = this.facade.products$;
+  products: Array<IProductEntity> = [];
   loaded$ = this.facade.loaded$;
   error$ = this.facade.error$;
+  destroyed$ = new Subject();
 
   constructor(private facade: ProductsFacade) {
     facade.loadProducts();
+    this.facade.products$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(products => {
+      if (!products) return;
+      this.products = products;
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next(0);
+    this.destroyed$.complete();
   }
 
 }

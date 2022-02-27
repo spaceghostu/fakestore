@@ -22,3 +22,11 @@ export const getCartItem = (id: number) => createSelector(
     getCartEntities,
     (entities) => entities[id]
 );
+
+export const getCartTotal = createSelector(
+    getAllCartItems,
+    (items) => {
+        if (!items?.length) return 0;
+        return items.reduce((total, entity) => +total + (+entity.price * +entity.quantity), 0);
+    }
+);

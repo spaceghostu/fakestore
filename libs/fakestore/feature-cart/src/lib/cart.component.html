@@ -1,0 +1,62 @@
+<ng-container *ngIf="cart.length > 0; else empty">
+    <div class="container row">
+        <div class="col col-md-8">
+            <cart-item
+                *ngFor="let item of cart"
+                [item]="item"
+                (updateQuantity)="updateQuantity($event)"
+                (removeFromCart)="removeFromCart($event)"
+            ></cart-item>
+        </div>
+        <div class="col col-md-4">
+            <div class="card">
+                <h5 class="card-header">Cart Summary</h5>
+                <div class="card-body">
+                    <p
+                        class="card-text text-right row justify-content-space-between"
+                    >
+                        <span class="col-md-6">Sub total: </span>
+                        <cart-item-price
+                            class="col-md-6"
+                            [value]="subTotal"
+                        ></cart-item-price>
+                    </p>
+                    <p
+                        class="card-text text-right row justify-content-space-between"
+                    >
+                        <span class="col-md-6">VAT: </span>
+                        <cart-item-price
+                            class="col-md-6"
+                            [value]="subTotalIncludingVAT"
+                        ></cart-item-price>
+                    </p>
+                    <p
+                        class="card-text text-right row justify-content-space-between"
+                    >
+                        <span class="col-md-6">Shipping: </span>
+                        <cart-item-price
+                            class="col-md-6"
+                            [value]="shipping"
+                        ></cart-item-price>
+                    </p>
+                    <p
+                        class="card-text text-right row justify-content-space-between font-weight-bold"
+                    >
+                        <span class="col-md-6">Total: </span>
+                        <cart-item-price
+                            class="col-md-6"
+                            [value]="total"
+                        ></cart-item-price>
+                    </p>
+                    <button type="button" class="btn btn-primary">
+                        Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #empty>
+    <div>Cart is empty</div>
+</ng-template>

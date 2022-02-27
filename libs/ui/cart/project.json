@@ -1,0 +1,23 @@
+{
+    "root": "libs/ui/cart",
+    "sourceRoot": "libs/ui/cart/src",
+    "projectType": "library",
+    "targets": {
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/ui/cart/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/ui/cart"],
+            "options": {
+                "jestConfig": "libs/ui/cart/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

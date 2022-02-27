@@ -1,0 +1,48 @@
+<div class="card mb-3" style="height: 100px">
+    <div class="row g-0 h-100">
+        <div class="col-md-2 p-2 h-100">
+            <img
+                [src]="item.image"
+                class="img img-fluid h-100 d-flex mx-auto"
+            />
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <h5 class="card-title mb-1 max-ln-1">
+                    {{ item.title }}
+                </h5>
+                <div>
+                    <cart-item-price
+                        class="font-weight-bold"
+                        [value]="item.price * item.quantity"
+                    ></cart-item-price>
+                    <span class="mx-1">@</span>
+                    <cart-item-price [value]="item.price"></cart-item-price>
+                    <span>x</span>
+                    <span>{{ item.quantity }}</span>
+                </div>
+            </div>
+        </div>
+        <div
+            class="col col-md-3 align-items-center d-flex p-3 justfify-content-end"
+        >
+            <div class="form-wrapper">
+                <label class="form-label" for="typeNumber">Quantity</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    [value]="item.quantity"
+                    (change)="handleUpdateQuantity($event)"
+                    mdbActive
+                />
+            </div>
+            <button
+                type="button"
+                class="btn btn-danger"
+                (click)="handleRemove()"
+            >
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    </div>
+</div>
