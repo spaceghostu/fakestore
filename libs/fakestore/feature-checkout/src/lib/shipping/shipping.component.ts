@@ -1,10 +1,10 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { countryList } from '@fakestore/util/shared';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { CheckoutFacade } from '../+state/checkout.facade';
-import { IShippingDetails } from '../../../../../data/src/lib/shipping-details.model';
+import { IShippingDetails } from '@fakestore/data';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { IShippingDetails } from '../../../../../data/src/lib/shipping-details.m
   styleUrls: ['./shipping.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShippingComponent implements OnDestroy {
+export class ShippingComponent implements OnDestroy, OnInit {
 
   shippingForm!: FormGroup;
   countries = countryList;
@@ -54,6 +54,14 @@ export class ShippingComponent implements OnDestroy {
         this.shippingForm.get('phone')?.removeValidators(Validators.maxLength(13));
         this.shippingForm.get('phone')?.addValidators(Validators.maxLength(10));
       }
+    });
+  }
+
+  ngOnInit() {
+    this.checkoutFacade.shippingDetails$.pipe(
+      take(1)
+    ).subscribe(shippingForm => {
+      this.shippingForm.setValue(shippingForm);
     });
   }
 
