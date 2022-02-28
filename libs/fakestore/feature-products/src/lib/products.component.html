@@ -23,9 +23,20 @@
 </ng-template>
 
 <ng-template #error>
-    <div class="error-message">An error occurred</div>
+    <div class="container row justify-content-center mt-5 pt-5">
+        <div class="row col-md-2 justify-content-center">
+            <div class="error">An error occurred</div>
+            <button type="button" class="btn btn-link" (click)="loadProducts()">
+                Retry
+            </button>
+        </div>
+    </div>
 </ng-template>
 
 <ng-template #loading>
-    <div class="loader">Loading...</div>
+    <div class="loader row justify-content-center">
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 </ng-template>

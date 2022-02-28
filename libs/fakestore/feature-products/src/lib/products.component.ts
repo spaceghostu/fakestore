@@ -20,7 +20,7 @@ export class ProductsComponent implements OnDestroy {
   constructor(
     private facade: ProductsFacade,
   ) {
-    facade.loadProducts();
+    this.loadProducts();
     this.facade.products$.pipe(
       takeUntil(this.destroyed$)
     ).subscribe(products => {
@@ -37,6 +37,10 @@ export class ProductsComponent implements OnDestroy {
     ).subscribe(category => {
       this.category = category as Categories;
     });
+  }
+
+  loadProducts() {
+    this.facade.loadProducts();
   }
 
   ngOnDestroy() {
