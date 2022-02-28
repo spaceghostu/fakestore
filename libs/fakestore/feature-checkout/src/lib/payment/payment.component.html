@@ -1,4 +1,4 @@
-<div class="container grid mb-5">
+<div class="container-fluid grid mb-5">
     <div class="card">
         <h5 class="card-header">Shipping Address</h5>
         <div class="card-body">
@@ -40,50 +40,50 @@
 </div>
 
 <div class="container row">
-    <div class="col col-md-8">
+    <div class="col-md-8 col-sm-12">
         <cart-item
             *ngFor="let item of cart"
             [item]="item"
             [minimal]="true"
         ></cart-item>
     </div>
-    <div class="col col-md-4">
+    <div class="col-md-4 col-sm-12">
         <div class="card">
             <h5 class="card-header">Cart Summary</h5>
             <div class="card-body">
                 <p
                     class="card-text text-right row justify-content-space-between"
                 >
-                    <span class="col-md-6">Sub total: </span>
+                    <span class="col-md-6 col col-sm-6">Sub total: </span>
                     <cart-item-price
-                        class="col-md-6"
+                        class="col-md-6 col col-sm-6"
                         [value]="subTotal"
                     ></cart-item-price>
                 </p>
                 <p
                     class="card-text text-right row justify-content-space-between"
                 >
-                    <span class="col-md-6">VAT: </span>
+                    <span class="col-md-6 col col-sm-6">VAT: </span>
                     <cart-item-price
-                        class="col-md-6"
+                        class="col-md-6 col col-sm-6"
                         [value]="subTotalIncludingVAT"
                     ></cart-item-price>
                 </p>
                 <p
                     class="card-text text-right row justify-content-space-between"
                 >
-                    <span class="col-md-6">Shipping: </span>
+                    <span class="col-md-6 col col-sm-6">Shipping: </span>
                     <cart-item-price
-                        class="col-md-6"
+                        class="col-md-6 col col-sm-6"
                         [value]="shipping"
                     ></cart-item-price>
                 </p>
                 <p
                     class="card-text text-right row justify-content-space-between font-weight-bold"
                 >
-                    <span class="col-md-6">Total: </span>
+                    <span class="col-md-6 col col-sm-6">Total: </span>
                     <cart-item-price
-                        class="col-md-6"
+                        class="col-md-6 col col-sm-6"
                         [value]="total"
                     ></cart-item-price>
                 </p>
