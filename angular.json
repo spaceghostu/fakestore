@@ -5,6 +5,7 @@
         "fakestore": "apps/fakestore",
         "fakestore-e2e": "apps/fakestore-e2e",
         "fakestore-feature-cart": "libs/fakestore/feature-cart",
+        "fakestore-feature-checkout": "libs/fakestore/feature-checkout",
         "fakestore-feature-products": "libs/fakestore/feature-products",
         "ui-cart": "libs/ui/cart",
         "ui-products": "libs/ui/products",

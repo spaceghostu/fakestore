@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FilterPipe } from './filter.pipe';
-import { FilterCategoryPipe } from './filter-category.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterCategoryPipe } from './pipes/filter-category.pipe';
 
 
 

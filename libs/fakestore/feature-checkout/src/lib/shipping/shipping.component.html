@@ -1,0 +1,293 @@
+<div class="container row justify-content-md-center">
+    <div class="col col-md-6">
+        <form
+            class="text-center border border-light p-5"
+            [formGroup]="shippingForm"
+            (submit)="handleSubmit()"
+        >
+            <p class="h4 mb-4">Contact Details</p>
+
+            <div class="form-row row mb-4">
+                <div class="col col-md-6">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First name"
+                        formControlName="firstName"
+                    />
+                    <ng-container
+                        *ngIf="shippingForm.get('firstName') as firstName"
+                    >
+                        <ng-container
+                            *ngIf="
+                                firstName.invalid &&
+                                (firstName.dirty ||
+                                    firstName.touched ||
+                                    showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="firstName.errors?.['required']"
+                                class="form-error"
+                            >
+                                First Name is required.
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="col col-md-6">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Last name"
+                        formControlName="lastName"
+                    />
+                    <ng-container
+                        *ngIf="shippingForm.get('lastName') as lastName"
+                    >
+                        <ng-container
+                            *ngIf="
+                                lastName.invalid &&
+                                (lastName.dirty ||
+                                    lastName.touched ||
+                                    showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="lastName.errors?.['required']"
+                                class="form-error"
+                            >
+                                Last Name is required.
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="col mb-4">
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="E-mail"
+                    formControlName="email"
+                />
+                <ng-container *ngIf="shippingForm.get('email') as email">
+                    <ng-container
+                        *ngIf="
+                            email.invalid &&
+                            (email.dirty || email.touched || showErrors)
+                        "
+                    >
+                        <div
+                            *ngIf="email.errors?.['required']"
+                            class="form-error"
+                        >
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors?.['email']" class="form-error">
+                            Invalid email format
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+
+            <div class="col mb-4">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Phone number"
+                    formControlName="phone"
+                />
+                <ng-container *ngIf="shippingForm.get('phone') as phone">
+                    <ng-container
+                        *ngIf="
+                            phone.invalid &&
+                            (phone.dirty || phone.touched || showErrors)
+                        "
+                    >
+                        <div
+                            *ngIf="phone.errors?.['required']"
+                            class="form-error"
+                        >
+                            Phone number is required.
+                        </div>
+                        <div
+                            *ngIf="phone.errors?.['pattern']"
+                            class="form-error"
+                        >
+                            Invalid phone format
+                        </div>
+                        <div
+                            *ngIf="phone.errors?.['maxlength']"
+                            class="form-error"
+                        >
+                            Phone number is too long
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+            <p class="h4 my-4">Shipping Address</p>
+            <div formGroupName="address">
+                <div class="col mb-4">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Apartment (Optional)"
+                        formControlName="apartment"
+                    />
+                </div>
+                <div class="col mb-4">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Street"
+                        formControlName="street"
+                    />
+                    <ng-container
+                        *ngIf="shippingForm.get('address.street') as street"
+                    >
+                        <ng-container
+                            *ngIf="
+                                street.invalid &&
+                                (street.dirty || street.touched || showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="street.errors?.['required']"
+                                class="form-error"
+                            >
+                                Street is required.
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="col mb-4">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Suburb"
+                        formControlName="suburb"
+                    />
+                    <ng-container
+                        *ngIf="shippingForm.get('address.suburb') as suburb"
+                    >
+                        <ng-container
+                            *ngIf="
+                                suburb.invalid &&
+                                (suburb.dirty || suburb.touched || showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="suburb.errors?.['required']"
+                                class="form-error"
+                            >
+                                Suburb is required.
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="col mb-4">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Province/State"
+                        formControlName="province"
+                    />
+                    <ng-container
+                        *ngIf="shippingForm.get('address.province') as province"
+                    >
+                        <ng-container
+                            *ngIf="
+                                province.invalid &&
+                                (province.dirty ||
+                                    province.touched ||
+                                    showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="province.errors?.['required']"
+                                class="form-error"
+                            >
+                                Province is required.
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="col mb-4">
+                    <ng-select
+                        [items]="countries"
+                        formControlName="country"
+                        placeholder="Country"
+                        class="form-control"
+                    >
+                    </ng-select>
+                    <ng-container
+                        *ngIf="shippingForm.get('address.country') as country"
+                    >
+                        <ng-container
+                            *ngIf="
+                                country.invalid &&
+                                (country.dirty || country.touched || showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="country.errors?.['required']"
+                                class="form-error"
+                            >
+                                Country is required.
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+
+                <div class="col mb-4">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Code"
+                        formControlName="code"
+                    />
+                    <ng-container
+                        *ngIf="shippingForm.get('address.code') as code"
+                    >
+                        <ng-container
+                            *ngIf="
+                                code.invalid &&
+                                (code.dirty || code.touched || showErrors)
+                            "
+                        >
+                            <div
+                                *ngIf="code.errors?.['required']"
+                                class="form-error"
+                            >
+                                Code is required.
+                            </div>
+                            <div
+                                *ngIf="code.errors?.['pattern']"
+                                class="form-error"
+                            >
+                                Can only contain numbers
+                            </div>
+                            <div
+                                *ngIf="code.errors?.['minlength'] || code.errors?.['maxlength']"
+                                class="form-error"
+                            >
+                                Must be 4 digits long
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+
+            <button
+                mdbBtn
+                color="info"
+                block="true"
+                class="btn btn-primary my-4"
+                type="submit"
+            >
+                Confirm
+            </button>
+        </form>
+    </div>
+</div>

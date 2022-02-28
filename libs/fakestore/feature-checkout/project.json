@@ -1,0 +1,23 @@
+{
+    "root": "libs/fakestore/feature-checkout",
+    "sourceRoot": "libs/fakestore/feature-checkout/src",
+    "projectType": "library",
+    "targets": {
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/fakestore/feature-checkout/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/fakestore/feature-checkout"],
+            "options": {
+                "jestConfig": "libs/fakestore/feature-checkout/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

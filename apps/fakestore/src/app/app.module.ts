@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { CartModule } from '@fakestore/fakestore-feature-cart';
 import { NavbarModule } from './navbar/navbar.module';
+import { CheckoutModule } from '@fakestore/fakestore-feature-checkout';
 
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -78,6 +79,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MdbValidationModule,
     BrowserAnimationsModule,
     NavbarModule,
+    CheckoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

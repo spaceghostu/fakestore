@@ -6,6 +6,7 @@ import * as fromCart from './+state/cart.reducer';
 import { CartEffects } from './+state/cart.effects';
 import { CartComponent } from './cart.component';
 import { CartItemModule } from '@fakestore/ui/cart';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CartItemModule } from '@fakestore/ui/cart';
     StoreModule.forFeature(fromCart.CART_FEATURE_KEY, fromCart.reducer),
     EffectsModule.forFeature([CartEffects]),
     CartItemModule,
+    RouterModule,
   ],
 })
 export class CartModule { }
