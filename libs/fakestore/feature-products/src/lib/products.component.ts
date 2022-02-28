@@ -20,7 +20,12 @@ export class ProductsComponent implements OnDestroy {
   constructor(
     private facade: ProductsFacade,
   ) {
-    this.loadProducts();
+    this.facade.loaded$.pipe(
+      takeUntil(this.destroyed$)
+    ).subscribe(loaded => {
+      if (loaded) return;
+      this.loadProducts();
+    });
     this.facade.products$.pipe(
       takeUntil(this.destroyed$)
     ).subscribe(products => {
