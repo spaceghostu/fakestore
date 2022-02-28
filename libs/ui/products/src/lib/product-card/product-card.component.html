@@ -23,7 +23,7 @@
     </div>
 </div> -->
 
-<div class="card mb-3" style="height: 200px">
+<div class="card mb-3">
     <div class="row g-0 h-100">
         <div class="col-md-3 p-4 h-100">
             <!-- <div class=" h-100"> -->
@@ -47,17 +47,23 @@
                 <!-- <a class="link fs-7 pointer" (click)="toggleShowMore()"
                     >show more</a
                 > -->
-                <p class="card-text mb-1">
-                    <product-card-price
-                        [value]="product.price"
-                    ></product-card-price>
-                </p>
-                <p class="card-text mb-1">
-                    <product-card-rating
-                        [rating]="product.rating.rate"
-                        [count]="product.rating.count"
-                    ></product-card-rating>
-                </p>
+                <div class="row justify-content-start">
+                    <p
+                        class="card-text mb-1 col col-md-12 col-sm-3 flex-grow-0"
+                    >
+                        <product-card-price
+                            [value]="product.price"
+                        ></product-card-price>
+                    </p>
+                    <p
+                        class="card-text mb-1 col col-md-12 col-sm-3 d-flex align-items-end"
+                    >
+                        <product-card-rating
+                            [rating]="product.rating.rate"
+                            [count]="product.rating.count"
+                        ></product-card-rating>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
