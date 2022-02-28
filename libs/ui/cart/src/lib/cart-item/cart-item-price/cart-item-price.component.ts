@@ -11,9 +11,14 @@ export class CartItemPriceComponent {
   @Input() symbol = 'R';
   mainValue = '0';
   cents = '00';
+  _value = 0;
   @Input()
+  get value() {
+    return this._value;
+  }
   set value(value: number | null) {
     if (!value) return;
+    this._value = value;
     if (value.toString().includes('.')) {
       this.mainValue = value?.toFixed(2).toString?.().match?.(/[^.]*/)?.[0] || '';
       this.cents = value?.toFixed(2).toString?.().match?.(/\.(.*)/)?.[1] || '';

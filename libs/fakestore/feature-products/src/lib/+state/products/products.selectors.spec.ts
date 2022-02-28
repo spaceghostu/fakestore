@@ -1,5 +1,5 @@
 
-import { IProductEntity } from '@fakestore/data';
+import { Categories, IProductEntity } from '@fakestore/data';
 import { createProductEntity } from '@fakestore/util/testing';
 import {
   productsAdapter,
@@ -27,6 +27,8 @@ describe('Products Selectors', () => {
           selectedId: 2,
           error: ERROR_MSG,
           loaded: true,
+          filter: 'filter',
+          category: Categories.MENS_CLOTHING,
         }
       ),
     };
@@ -58,6 +60,18 @@ describe('Products Selectors', () => {
       const result = ProductsSelectors.getProductsError(state);
 
       expect(result).toBe(ERROR_MSG);
+    });
+
+    it('getFilter() should return the current "error" state', () => {
+      const result = ProductsSelectors.getFilter(state);
+
+      expect(result).toBe('filter');
+    });
+
+    it('getCategory() should return the current "error" state', () => {
+      const result = ProductsSelectors.getCategory(state);
+
+      expect(result).toBe(Categories.MENS_CLOTHING);
     });
   });
 });

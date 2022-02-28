@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as CheckoutActions from './checkout.actions';
-import { IShippingDetails } from '../../../../../data/src/lib/shipping-details.model';
+import { IShippingDetails } from '@fakestore/data';
 
 export const CHECKOUT_FEATURE_KEY = 'checkout';
 

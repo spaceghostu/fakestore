@@ -42,19 +42,19 @@ export class ShippingComponent implements OnDestroy, OnInit {
     });
 
 
-    // Change phone control max length depending on if it is in
-    // long or short format
-    this.shippingForm.controls['phone'].valueChanges.pipe(
-      takeUntil(this.destroyed$)
-    ).subscribe(value => {
-      if (value.includes('+')) {
-        this.shippingForm.get('phone')?.removeValidators(Validators.maxLength(10));
-        this.shippingForm.get('phone')?.addValidators(Validators.maxLength(13));
-      } else {
-        this.shippingForm.get('phone')?.removeValidators(Validators.maxLength(13));
-        this.shippingForm.get('phone')?.addValidators(Validators.maxLength(10));
-      }
-    });
+    // // Change phone control max length depending on if it is in
+    // // long or short format
+    // this.shippingForm.controls['phone'].valueChanges.pipe(
+    //   takeUntil(this.destroyed$)
+    // ).subscribe(value => {
+    //   if (value.includes('+')) {
+    //     this.shippingForm.get('phone')?.removeValidators(Validators.maxLength(10));
+    //     this.shippingForm.get('phone')?.addValidators(Validators.maxLength(13));
+    //   } else {
+    //     this.shippingForm.get('phone')?.removeValidators(Validators.maxLength(13));
+    //     this.shippingForm.get('phone')?.addValidators(Validators.maxLength(10));
+    //   }
+    // });
   }
 
   ngOnInit() {

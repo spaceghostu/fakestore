@@ -1,62 +1,36 @@
-import { CartEntity } from './cart.models';
 import { cartAdapter, CartPartialState, initialState } from './cart.reducer';
 import * as CartSelectors from './cart.selectors';
+import { createCartItem } from '@fakestore/util/testing';
 
 describe('Cart Selectors', () => {
-    const ERROR_MSG = 'No Error Available';
-    const getCartId = (it: CartEntity) => it.id;
-    const createCartEntity = (id: string, name = '') =>
-        ({
-            id,
-            name: name || `name-${id}`,
-        } as CartEntity);
-
     let state: CartPartialState;
 
     beforeEach(() => {
         state = {
             cart: cartAdapter.setAll(
                 [
-                    createCartEntity('PRODUCT-AAA'),
-                    createCartEntity('PRODUCT-BBB'),
-                    createCartEntity('PRODUCT-CCC'),
+                    createCartItem(0, '', 1, 25),
+                    createCartItem(1, '', 2, 12.5),
+                    createCartItem(2, '', 3, 5),
                 ],
                 {
                     ...initialState,
-                    selectedId: 'PRODUCT-BBB',
-                    error: ERROR_MSG,
-                    loaded: true,
+                    error: '',
                 }
             ),
         };
     });
 
     describe('Cart Selectors', () => {
-        it('getAllCart() should return the list of Cart', () => {
-            const results = CartSelectors.getAllCart(state);
-            const selId = getCartId(results[1]);
-
+        it('getAllCartItems() should return the list of cart items', () => {
+            const results = CartSelectors.getAllCartItems(state);
             expect(results.length).toBe(3);
-            expect(selId).toBe('PRODUCT-BBB');
+        });
+        it('getCartTotal() should calculate and return the total of all cart items', () => {
+            const results = CartSelectors.getCartTotal(state);
+            expect(results).toBe(65);
         });
 
-        it('getSelected() should return the selected Entity', () => {
-            const result = CartSelectors.getSelected(state) as CartEntity;
-            const selId = getCartId(result);
-
-            expect(selId).toBe('PRODUCT-BBB');
-        });
-
-        it('getCartLoaded() should return the current "loaded" status', () => {
-            const result = CartSelectors.getCartLoaded(state);
-
-            expect(result).toBe(true);
-        });
-
-        it('getCartError() should return the current "error" state', () => {
-            const result = CartSelectors.getCartError(state);
-
-            expect(result).toBe(ERROR_MSG);
-        });
     });
 });
+

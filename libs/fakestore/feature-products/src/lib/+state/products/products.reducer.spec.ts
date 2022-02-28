@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 
 import * as ProductsActions from './products.actions';
 import { State, initialState, reducer } from './products.reducer';
-import { IProductEntity } from '@fakestore/data';
+import { Categories, IProductEntity } from '@fakestore/data';
 import { createProductEntity } from '@fakestore/util/testing';
 
 describe('Products Reducer', () => {
@@ -72,6 +72,22 @@ describe('Products Reducer', () => {
     });
     it('should keep loaded as false', () => {
       expect(result.loaded).toBe(false);
+    });
+  });
+
+  describe('[Products Page] Query Products', () => {
+    const action = ProductsActions.queryProducts({ query: 'query' });
+    const result = reducer(initialState, action);
+    it('should set filter', () => {
+      expect(result.filter).toBe('query');
+    });
+  });
+
+  describe('[Products Page] Set Category', () => {
+    const action = ProductsActions.setCategory({ category: Categories.JEWELRY });
+    const result = reducer(initialState, action);
+    it('should set the category', () => {
+      expect(result.category).toBe(Categories.JEWELRY);
     });
   });
 });

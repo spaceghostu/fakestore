@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent, NxWelcomeComponent],
+      declarations: [AppComponent, NavbarComponent],
+      imports: [MdbCollapseModule]
     }).compileComponents();
   });
 
@@ -14,19 +17,11 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-
-  it(`should have as title 'fakestore'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('fakestore');
-  });
-
-  it('should render title', () => {
+  it('should render the navbar', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome fakestore'
-    );
+    const { debugElement } = fixture;
+    const navbar = debugElement.query(By.directive(NavbarComponent));
+    expect(navbar).toBeTruthy();
   });
 });

@@ -1,5 +1,5 @@
-import { ICartItem } from '@fakestore/data';
 import { createAction, props } from '@ngrx/store';
+import { ICartItem } from '@fakestore/data';
 
 export const addToCart = createAction(
     '[Cart] Add To Cart',

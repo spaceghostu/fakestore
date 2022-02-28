@@ -19,11 +19,11 @@ const randomCategory = (): string => {
     return categories[randomIndex];
 };
 
-export const createProductEntity = (id: number, title = '') =>
+export const createProductEntity = (id: number, title = '', price = 0) =>
 ({
     id,
     title: title || `name-${id}`,
-    price: randomFloat(0, 200),
+    price: price || randomFloat(0, 200),
     description: `description for item-${id}`,
     category: randomCategory(),
     image: 'https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg',

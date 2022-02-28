@@ -1,27 +1,18 @@
+import { createShippingDetails } from '@fakestore/util/testing';
 import { Action } from '@ngrx/store';
 
 import * as CheckoutActions from './checkout.actions';
-import { CheckoutEntity } from './checkout.models';
 import { State, initialState, reducer } from './checkout.reducer';
 
 describe('Checkout Reducer', () => {
-    const createCheckoutEntity = (id: string, name = ''): CheckoutEntity => ({
-        id,
-        name: name || `name-${id}`,
-    });
-
-    describe('valid Checkout actions', () => {
-        it('loadCheckoutSuccess should return the list of known Checkout', () => {
-            const checkout = [
-                createCheckoutEntity('PRODUCT-AAA'),
-                createCheckoutEntity('PRODUCT-zzz'),
-            ];
-            const action = CheckoutActions.loadCheckoutSuccess({ checkout });
+    describe('[Checkout] Set Shipping Details', () => {
+        it('should set shipping details', () => {
+            const shippingDetails = createShippingDetails();
+            const action = CheckoutActions.setShippingDetails({ shippingDetails });
 
             const result: State = reducer(initialState, action);
 
-            expect(result.loaded).toBe(true);
-            expect(result.ids.length).toBe(2);
+            expect(result.shippingDetails).toMatchObject(shippingDetails);
         });
     });
 
