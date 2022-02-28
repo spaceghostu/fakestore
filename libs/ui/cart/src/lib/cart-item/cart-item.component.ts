@@ -12,6 +12,7 @@ export class CartItemComponent {
   @Input() item: ICartItem = new CartItem();
   @Output() updateQuantity = new EventEmitter();
   @Output() removeFromCart = new EventEmitter();
+  @Input() minimal = false;
 
   handleRemove() {
     this.removeFromCart.emit({ id: this.item.id });

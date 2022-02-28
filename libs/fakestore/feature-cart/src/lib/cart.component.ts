@@ -15,7 +15,6 @@ export class CartComponent implements OnDestroy {
   subTotal = 0;
   VAT = 0.15;
   subTotalIncludingVAT = 0;
-  shipping = 0;
   total = 0;
 
   constructor(private facade: CartFacade) {
@@ -30,9 +29,8 @@ export class CartComponent implements OnDestroy {
     ).subscribe(total => {
       if (!total) return;
       this.subTotal = total;
-      this.shipping = total * 0.1;
       this.subTotalIncludingVAT = total * 0.15;
-      this.total = this.subTotal + this.subTotalIncludingVAT + this.shipping;
+      this.total = this.subTotal + this.subTotalIncludingVAT;
     });
   }
 

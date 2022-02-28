@@ -33,7 +33,7 @@ import { CheckoutModule } from '@fakestore/fakestore-feature-checkout';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
-    keys: ['cart'],
+    keys: ['cart', 'checkout'],
     rehydrate: true,
   })(reducer);
 }

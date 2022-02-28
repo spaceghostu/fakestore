@@ -9,14 +9,13 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-
+import { StoreModule } from '@ngrx/store';
+import * as fromCheckout from './+state/checkout.reducer';
+import { CheckoutFacade } from './+state/checkout.facade';
+import { CartItemModule } from '@fakestore/ui/cart';
 
 @NgModule({
-  declarations: [
-    ShippingComponent,
-    PaymentComponent,
-    CheckoutComponent,
-  ],
+  declarations: [ShippingComponent, PaymentComponent, CheckoutComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -25,7 +24,12 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     NgSelectModule,
     MdbRippleModule,
     MdbValidationModule,
-
-  ]
+    CartItemModule,
+    StoreModule.forFeature(
+      fromCheckout.CHECKOUT_FEATURE_KEY,
+      fromCheckout.reducer
+    ),
+  ],
+  providers: [CheckoutFacade],
 })
 export class CheckoutModule { }

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { countryList } from '@fakestore/util/shared';
 import { Subject, takeUntil } from 'rxjs';
+import { CheckoutFacade } from '../+state/checkout.facade';
+import { IShippingDetails } from '../../../../../data/src/lib/shipping-details.model';
 
 
 @Component({
@@ -21,7 +23,8 @@ export class ShippingComponent implements OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private checkoutFacade: CheckoutFacade,
   ) {
     this.shippingForm = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -57,6 +60,7 @@ export class ShippingComponent implements OnDestroy {
   handleSubmit() {
     this.showErrors = true;
     if (this.shippingForm.invalid) return;
+    this.checkoutFacade.setShippingDetails(this.shippingForm.value as IShippingDetails);
     this.router.navigate(['checkout', 'payment']);
   }
 

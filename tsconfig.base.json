@@ -19,11 +19,11 @@
             "@fakestore/fakestore-feature-cart": [
                 "libs/fakestore/feature-cart/src/index.ts"
             ],
-            "@fakestore/fakestore-feature-products": [
-                "libs/fakestore/feature-products/src/index.ts"
-            ],
             "@fakestore/fakestore-feature-checkout": [
                 "libs/fakestore/feature-checkout/src/index.ts"
+            ],
+            "@fakestore/fakestore-feature-products": [
+                "libs/fakestore/feature-products/src/index.ts"
             ],
             "@fakestore/ui/cart": ["libs/ui/cart/src/index.ts"],
             "@fakestore/ui/products": ["libs/ui/products/src/index.ts"],

@@ -1,1 +1,93 @@
-<p>payment works!</p>
+<div class="container grid mb-5">
+    <div class="card">
+        <h5 class="card-header">Shipping Address</h5>
+        <div class="card-body">
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.address?.apartment }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.address?.street }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.address?.suburb }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.address?.province }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.address?.country }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.address?.code }}
+            </p>
+        </div>
+    </div>
+    <div class="card h-100 w-auto">
+        <h5 class="card-header">Contact Details</h5>
+        <div class="card-body">
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.firstName }}
+                {{ (shippingDetails$ | async)?.lastName }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.email }}
+            </p>
+            <p class="card-text mb-0">
+                {{ (shippingDetails$ | async)?.phone }}
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container row">
+    <div class="col col-md-8">
+        <cart-item
+            *ngFor="let item of cart"
+            [item]="item"
+            [minimal]="true"
+        ></cart-item>
+    </div>
+    <div class="col col-md-4">
+        <div class="card">
+            <h5 class="card-header">Cart Summary</h5>
+            <div class="card-body">
+                <p
+                    class="card-text text-right row justify-content-space-between"
+                >
+                    <span class="col-md-6">Sub total: </span>
+                    <cart-item-price
+                        class="col-md-6"
+                        [value]="subTotal"
+                    ></cart-item-price>
+                </p>
+                <p
+                    class="card-text text-right row justify-content-space-between"
+                >
+                    <span class="col-md-6">VAT: </span>
+                    <cart-item-price
+                        class="col-md-6"
+                        [value]="subTotalIncludingVAT"
+                    ></cart-item-price>
+                </p>
+                <p
+                    class="card-text text-right row justify-content-space-between"
+                >
+                    <span class="col-md-6">Shipping: </span>
+                    <cart-item-price
+                        class="col-md-6"
+                        [value]="shipping"
+                    ></cart-item-price>
+                </p>
+                <p
+                    class="card-text text-right row justify-content-space-between font-weight-bold"
+                >
+                    <span class="col-md-6">Total: </span>
+                    <cart-item-price
+                        class="col-md-6"
+                        [value]="total"
+                    ></cart-item-price>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
