@@ -1,6 +1,6 @@
 {
   "name": "fakestore",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -10,6 +10,7 @@
     "start:dev": "concurrently 'npm run api' 'npm start'",
     "start:prod": "nx serve --configuration production",
     "build": "nx build",
+    "deploy": "yarn version --patch && nx build && firebase deploy",
     "test": "nx test"
   },
   "private": true,
