@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subject, takeUntil, combineLatest } from 'rxjs';
 import { CartFacade } from '@fakestore/fakestore-feature-cart';
 import { ICartItem } from '@fakestore/data';
@@ -10,7 +10,7 @@ import { CheckoutFacade } from '../+state/checkout.facade';
   styleUrls: ['./payment.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaymentComponent {
+export class PaymentComponent implements OnDestroy {
 
   shippingDetails$ = this.checkoutFacade.shippingDetails$;
   destroyed$ = new Subject();
@@ -42,5 +42,10 @@ export class PaymentComponent {
       this.subTotalIncludingVAT = total * 0.15;
       this.total = this.subTotal + this.subTotalIncludingVAT + this.shipping;
     });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next(0);
+    this.destroyed$.complete();
   }
 }

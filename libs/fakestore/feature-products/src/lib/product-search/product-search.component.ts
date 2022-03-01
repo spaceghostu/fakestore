@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ProductsFacade } from '../+state/products/products.facade';
 
 @Component({
@@ -8,9 +9,10 @@ import { ProductsFacade } from '../+state/products/products.facade';
   styleUrls: ['./product-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductSearchComponent {
+export class ProductSearchComponent implements OnDestroy {
 
   searchForm!: FormGroup;
+  subscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -21,7 +23,7 @@ export class ProductSearchComponent {
         Validators.required,
       ]],
     });
-    this.searchForm.valueChanges.subscribe(value => {
+    this.subscription = this.searchForm.valueChanges.subscribe(value => {
       // It should clear the filter when the form is emptied
       // since the form cant submit an empty value
       if (!value.searchQuery)
@@ -35,5 +37,9 @@ export class ProductSearchComponent {
   // way in order have the form validation
   handleSubmit() {
     this.productsFacade.queryProducts(this.searchForm.controls['searchQuery'].value);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
