@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ProductsFacade } from '../+state/products/products.facade';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { CartFacade } from '@fakestore/fakestore-feature-cart';
   styleUrls: ['./product-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductDetailsComponent implements OnInit, OnDestroy {
+export class ProductDetailsComponent implements OnDestroy {
   id!: number;
   isInCart = false;
   product!: IProductEntity;
@@ -21,13 +21,11 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   loaded = false;
 
   constructor(
-    private route: ActivatedRoute,
-    private productsFacade: ProductsFacade,
-    private cartFacade: CartFacade,
-    private cdr: ChangeDetectorRef,
-  ) { }
-
-  ngOnInit() {
+    public route: ActivatedRoute,
+    public productsFacade: ProductsFacade,
+    public cartFacade: CartFacade,
+    public cdr: ChangeDetectorRef,
+  ) {
     combineLatest([
       this.route.params,
       this.productsFacade.loaded$,
@@ -56,6 +54,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         this.quantity = cartItem?.quantity;
         this.cdr.detectChanges();
       });
+
   }
 
   addToCart() {

@@ -1,34 +1,19 @@
-import { IProductEntity } from '@fakestore/data';
+import { Categories, IProductEntity } from '@fakestore/data';
 
-const randomFloat = (min: number, max: number, decimals = 2): number => {
-    return parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
-};
-const randomInt = (min: number, max: number): number => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-};
-const randomCategory = (): string => {
-    const categories = [
-        "electronics",
-        "jewelery",
-        "men's clothing",
-        "women's clothing"
-    ];
-    const randomIndex = randomInt(0, 3);
-    return categories[randomIndex];
-};
-
-export const createProductEntity = (id: number, title = '', price = 0) =>
-({
+export const createProductEntity = (
+    id: number,
+    title = '',
+    price = 49.50,
+    category = Categories.JEWELRY
+) => ({
     id,
     title: title || `name-${id}`,
-    price: price || randomFloat(0, 200),
+    price: price,
     description: `description for item-${id}`,
-    category: randomCategory(),
+    category: category,
     image: 'https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg',
     rating: {
-        rate: randomFloat(0, 5, 1),
-        count: randomInt(0, 200),
+        rate: 3.5,
+        count: 250,
     }
 } as IProductEntity);

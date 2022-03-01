@@ -5,14 +5,20 @@
     "targets": {
         "lint": {
             "executor": "@nrwl/linter:eslint",
-            "outputs": ["{options.outputFile}"],
+            "outputs": [
+                "{options.outputFile}"
+            ],
             "options": {
-                "lintFilePatterns": ["libs/ui/cart/**/*.ts"]
+                "lintFilePatterns": [
+                    "libs/ui/cart/**/*.ts"
+                ]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/ui/cart"],
+            "outputs": [
+                "coverage/libs/ui/cart"
+            ],
             "options": {
                 "jestConfig": "libs/ui/cart/jest.config.js",
                 "passWithNoTests": true

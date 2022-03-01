@@ -3,8 +3,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 @Component({
   selector: 'cart-item-price',
   templateUrl: './cart-item-price.component.html',
-  styleUrls: ['./cart-item-price.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./cart-item-price.component.scss']
 })
 export class CartItemPriceComponent {
 

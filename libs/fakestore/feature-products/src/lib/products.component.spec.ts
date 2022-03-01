@@ -4,8 +4,9 @@ import { ProductsFacade } from './+state/products/products.facade';
 import { of, Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { ProductCardModule } from '@fakestore/ui/products';
-import { IProductEntity } from '@fakestore/data';
+import { Categories, IProductEntity } from '@fakestore/data';
 import { createProductEntity } from '@fakestore/util/testing';
+import { UtilSharedModule } from '@fakestore/util/shared';
 
 describe('ProductsComponent', () => {
   let component: ProductsComponent;
@@ -16,6 +17,8 @@ describe('ProductsComponent', () => {
     products$: Observable<Array<IProductEntity>>;
     loaded$: Observable<boolean>;
     error$: Observable<string | null>;
+    filter$: Observable<string | null>;
+    category$: Observable<string | null>;
   }) => {
     TestBed.overrideProvider(ProductsFacade, {
       useValue: value
@@ -29,7 +32,7 @@ describe('ProductsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductsComponent],
-      imports: [ProductCardModule],
+      imports: [ProductCardModule, UtilSharedModule],
       providers: [
         {
           provide: ProductsFacade,
@@ -46,6 +49,8 @@ describe('ProductsComponent', () => {
         products$: of([]),
         loaded$: of(false),
         error$: of(null),
+        filter$: of(''),
+        category$: of(''),
       });
     });
 
@@ -70,6 +75,8 @@ describe('ProductsComponent', () => {
         ]),
         loaded$: of(true),
         error$: of(null),
+        filter$: of(''),
+        category$: of(''),
       });
     });
 
@@ -87,13 +94,59 @@ describe('ProductsComponent', () => {
         products$: of([]),
         loaded$: of(false),
         error$: of('An error occurred'),
+        filter$: of(''),
+        category$: of(''),
       });
     });
 
     it('should render an error message', () => {
       const containerElement = fixture.debugElement;
-      const error = containerElement.query(By.css('.error-message'));
+      const error = containerElement.query(By.css('.error'));
       expect(error?.nativeElement).toBeTruthy();
+    });
+  });
+  describe('when filter is applied', () => {
+    beforeEach(async () => {
+      await configureFacade({
+        loadProducts: jest.fn(),
+        products$: of([
+          createProductEntity(0, 'Men\'s Jeans'),
+          createProductEntity(1, 'Women\'s Jeans'),
+          createProductEntity(2, 'T-Shirt'),
+        ]),
+        loaded$: of(true),
+        error$: of(null),
+        filter$: of('jeans'),
+        category$: of(''),
+      });
+    });
+
+    it('should render a list of products that match the filter', () => {
+      const containerElement = fixture.debugElement;
+      const cards = containerElement.queryAll(By.css('product-card'));
+      expect(cards.length).toEqual(2);
+    });
+  });
+  describe('when a category is selected', () => {
+    beforeEach(async () => {
+      await configureFacade({
+        loadProducts: jest.fn(),
+        products$: of([
+          createProductEntity(0, '', 0, Categories.MENS_CLOTHING),
+          createProductEntity(1, '', 0, Categories.MENS_CLOTHING),
+          createProductEntity(2, '', 0, Categories.JEWELRY),
+        ]),
+        loaded$: of(true),
+        error$: of(null),
+        filter$: of(''),
+        category$: of(Categories.MENS_CLOTHING),
+      });
+    });
+
+    it('should render a list of products that match the filter', () => {
+      const containerElement = fixture.debugElement;
+      const cards = containerElement.queryAll(By.css('product-card'));
+      expect(cards.length).toEqual(2);
     });
   });
 

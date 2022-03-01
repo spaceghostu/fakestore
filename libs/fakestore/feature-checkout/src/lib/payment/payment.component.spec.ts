@@ -37,7 +37,7 @@ describe('PaymentComponent', () => {
         {
           provide: CheckoutFacade,
           useValue: {
-            shippingDetails: createShippingDetails(),
+            shippingDetails$: of(createShippingDetails()),
           }
         },
       ]
@@ -62,19 +62,19 @@ describe('PaymentComponent', () => {
     expect(cartItems.length).toBe(3);
   });
 
-  // it('should calculate and display the cart totals', () => {
-  //   const priceComponents = debugElement.queryAll(By.directive(CartItemPriceComponent));
+  it('should calculate and display the cart totals', () => {
+    const priceComponents = debugElement.queryAll(By.directive(CartItemPriceComponent));
 
-  //   const subTotalElement = priceComponents[0].componentInstance;
-  //   const vatElement = priceComponents[1].componentInstance;
-  //   const shippingElement = priceComponents[2].componentInstance;
-  //   const totalElement = priceComponents[3].componentInstance;
+    const subTotalElement = priceComponents[0].componentInstance;
+    const vatElement = priceComponents[1].componentInstance;
+    const shippingElement = priceComponents[2].componentInstance;
+    const totalElement = priceComponents[3].componentInstance;
 
-  //   fixture.detectChanges();
+    fixture.detectChanges();
 
-  //   expect(subTotalElement.value).toBe(65);
-  //   expect(vatElement).toBe(65);
-  //   expect(shippingElement).toBe(65);
-  //   expect(totalElement).toBe(65);
-  // });
+    expect(subTotalElement.value).toBe(65);
+    expect(vatElement.value).toBe(9.75);
+    expect(shippingElement.value).toBe(6.5);
+    expect(totalElement.value).toBe(81.25);
+  });
 });

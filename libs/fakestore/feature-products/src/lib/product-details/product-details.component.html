@@ -47,7 +47,7 @@
                         <div class="col-sm-12 col-md-5 flex-grow-0 my-3">
                             <a
                                 *ngIf="!isInCart; else removeButton"
-                                class="btn btn-primary w-100"
+                                class="btn btn-primary btn-add w-100"
                                 role="button"
                                 (click)="addToCart()"
                             >
@@ -56,7 +56,7 @@
                             </a>
                             <ng-template #removeButton>
                                 <a
-                                    class="btn btn-primary w-100"
+                                    class="btn btn-primary btn-remove w-100"
                                     role="button"
                                     (click)="removeFromCart()"
                                 >
@@ -75,7 +75,7 @@
                                 >
                                 <input
                                     type="number"
-                                    class="form-control"
+                                    class="form-control quantity-input"
                                     [value]="quantity"
                                     (change)="updateQuantity($event)"
                                     mdbActive
